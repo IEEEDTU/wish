@@ -20,7 +20,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
     private List<Music> musicList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, album, artist;
+        public TextView title, album, artist;
 
 
         public MyViewHolder(View view) {
@@ -28,7 +28,6 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
             title = (TextView) view.findViewById(R.id.title);
             album = (TextView) view.findViewById(R.id.album);
             artist = (TextView) view.findViewById(R.id.artist);
-
         }
     }
 
@@ -39,19 +38,20 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.music_list_row, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.music_list_row, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+
         Music music = musicList.get(position);
         holder.title.setText(music.getTitle());
         holder.album.setText(music.getAlbum());
 //        holder.year.setText(music.getYear());
         holder.artist.setText(music.getArtist());
+
 
     }
 
