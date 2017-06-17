@@ -23,22 +23,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
-    private List<Music> musicList = new ArrayList<>();
+public class AlbumActivity extends AppCompatActivity {
+    private List<Album> albumList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private MusicAdapter mAdapter;
+    private AlbumAdapter aAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_album);
 
-        recyclerView = (RecyclerView) findViewById(R.id.music_list);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MusicAdapter(musicList);
+        recyclerView = (RecyclerView) findViewById(R.id.album_list);
+        LinearLayoutManager aLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(aLayoutManager);
+        aAdapter = new AlbumAdapter(albumList);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(aAdapter);
 
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadAudiofiles() {
-       ContentResolver ContentResolver = getContentResolver();
-       Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        ContentResolver ContentResolver = getContentResolver();
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String selection = MediaStore.Audio.Media.IS_MUSIC + "!=0";
         String sortOrder = MediaStore.Audio.Media.TITLE + " ASC";
         Cursor cursor = ContentResolver.query(uri, null, selection, null, sortOrder);

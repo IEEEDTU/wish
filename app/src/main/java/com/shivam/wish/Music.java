@@ -35,7 +35,7 @@ public class Music {
     }
 
     public String getArtist() {
-        return album;
+        return artist;
     }
 
     public void setArtist(String artist) {
