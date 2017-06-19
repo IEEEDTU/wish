@@ -3,6 +3,8 @@ package com.shivam.wish;
 /**
  * Created by Harish Gola on 07-06-2017.
  */
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -46,7 +48,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         Album album = albumList.get(position);
-        holder.album_art.setImageDrawable(Drawable.createFromPath(album.getAlbum_art()));
+        Bitmap bm= BitmapFactory.decodeFile(album.getAlbum_art());
+        holder.album_art.setImageBitmap(bm);
         holder.album.setText(album.getAlbum());
 
 

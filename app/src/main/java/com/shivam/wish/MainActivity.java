@@ -71,13 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 String year = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.YEAR));
                 String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
                 String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-                String path = cursor.getString(cursor.getColumnIndex(android.provider.MediaStore.Audio.Albums.ALBUM_ART));
 
                 Log.d("MUSIC", title);
 
-                Bitmap bm= BitmapFactory.decodeFile(path);
-                ImageView image=(ImageView)findViewById(R.id.album_art);
-                image.setImageBitmap(bm);
+
                 musicList.add(new Music(title, album, year, artist));
 
             }

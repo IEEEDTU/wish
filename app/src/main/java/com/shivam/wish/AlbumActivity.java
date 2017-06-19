@@ -57,33 +57,27 @@ public class AlbumActivity extends AppCompatActivity {
 
     public void loadAudiofiles() {
         ContentResolver ContentResolver = getContentResolver();
-        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String selection = MediaStore.Audio.Media.IS_MUSIC + "!=0";
-        String sortOrder = MediaStore.Audio.Media.TITLE + " ASC";
-        Cursor cursor = ContentResolver.query(uri, null, selection, null, sortOrder);
+        Uri uri = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI;
+        String sortOrder = MediaStore.Audio.Albums.ALBUM + " ASC";
+        Cursor cursor = ContentResolver.query(uri, null, null, null, sortOrder);
 
-        Log.d("MUSIC", String.valueOf(cursor.getCount()));
+        Log.d("ALBUM", String.valueOf(cursor.getCount()));
 
         if(cursor != null && cursor.getCount() > 0){
             while(cursor.moveToNext())
             {
-                String title = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
-                String year = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.YEAR));
-                String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
-                String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-                String path = cursor.getString(cursor.getColumnIndex(android.provider.MediaStore.Audio.Albums.ALBUM_ART));
+                String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM));
+                String path = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART));
+                String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST));
+                Log.d("ALBUM", album);
 
-                Log.d("MUSIC", title);
 
-                Bitmap bm= BitmapFactory.decodeFile(path);
-                ImageView image=(ImageView)findViewById(R.id.album_art);
-                image.setImageBitmap(bm);
-                musicList.add(new Music(title, album, year, artist));
+                albumList.add(new Album(album, path, artist));
 
             }
         }
         cursor.close();
-        mAdapter.notifyDataSetChanged();
+        aAdapter.notifyDataSetChanged();
 
     }
 
