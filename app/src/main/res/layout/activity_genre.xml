@@ -13,7 +13,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="336dp"
         android:layout_height="wrap_content"
-        android:id="@+id/album_list"
+        android:id="@+id/genre_list"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">
     </android.support.v7.widget.RecyclerView>
