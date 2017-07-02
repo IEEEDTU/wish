@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wish</string>
+    <string name="title_activity_artist">ArtistActivity</string>
 </resources>
