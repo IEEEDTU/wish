@@ -10,7 +10,7 @@ public class Artist {
     public Artist() {
 
     }
-    public Artist(String artistNAme)
+    public Artist(String artistName)
     {
         this.artistName = artistName;
     }
